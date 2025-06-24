@@ -31,18 +31,6 @@
     <input id="key" placeholder="sk-..." />
     <button id="save">保存</button>
 
-    <script>
-      (async () => {
-        const { openaiKey } = await chrome.storage.local.get('openaiKey');
-        if (openaiKey) document.getElementById('key').value = openaiKey;
-      })();
-
-      document.getElementById('save').onclick = async () => {
-        await chrome.storage.local.set({
-          openaiKey: document.getElementById('key').value.trim()
-        });
-        alert('已保存!');
-      };
-    </script>
+    <script src="options.js"></script>
   </body>
 </html>
