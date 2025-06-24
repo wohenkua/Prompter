@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Prompt Booster 设置</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        max-width: 400px;
+        margin: 40px auto;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+      }
+      button {
+        margin-top: 12px;
+        padding: 8px 16px;
+        background: #10a37f;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>OpenAI API Key</h2>
+    <input id="key" placeholder="sk-..." />
+    <button id="save">保存</button>
+
+    <script>
+      (async () => {
+        const { openaiKey } = await chrome.storage.local.get('openaiKey');
+        if (openaiKey) document.getElementById('key').value = openaiKey;
+      })();
+
+      document.getElementById('save').onclick = async () => {
+        await chrome.storage.local.set({
+          openaiKey: document.getElementById('key').value.trim()
+        });
+        alert('已保存!');
+      };
+    </script>
+  </body>
+</html>

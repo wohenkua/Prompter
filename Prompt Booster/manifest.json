@@ -1,0 +1,33 @@
+{
+  "name": "Prompt Booster",
+  "description": "提升、管理 ChatGPT Prompt 的 Chrome 扩展",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_title": "Prompt 历史",
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://api.openai.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://chat.openai.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "service_worker.js",
+    "type": "module"
+  }
+}
