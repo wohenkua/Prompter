@@ -18,11 +18,12 @@
   ],
   "host_permissions": [
     "https://chat.openai.com/*",
-    "https://api.openai.com/*"
+    "https://api.openai.com/*",
+    "https://chatgpt.com/*"
   ],
   "content_scripts": [
     {
-      "matches": ["https://chat.openai.com/*"],
+      "matches": ["https://chat.openai.com/*","https://chatgpt.com/*","https://chat.deepseek.com/*"],
       "js": ["content.js"]
     }
   ],

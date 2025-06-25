@@ -38,20 +38,20 @@ async function optimizePrompt(original) {
 
 // 监听来自 content 的请求
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if (msg.type === 'OPTIMIZE_PROMPT') {
-    optimizePrompt(msg.payload.original)
-      .then(async optimized => {
-        // 持久化（时间戳索引便于排序）
-        const timestamp = Date.now();
-        await chrome.storage.local.set({
-          [timestamp]: { original: msg.payload.original, optimized }
-        });
-        sendResponse(optimized);
-      })
-      .catch(err => {
-        console.error(err);
-        sendResponse(null);
-      });
-    return true; // 表示异步
-  }
+  // if (msg.type === 'OPTIMIZE_PROMPT') {
+  //   optimizePrompt(msg.payload.original)
+  //     .then(async optimized => {
+  //       // 持久化（时间戳索引便于排序）
+  //       const timestamp = Date.now();
+  //       await chrome.storage.local.set({
+  //         [timestamp]: { original: msg.payload.original, optimized }
+  //       });
+  //       sendResponse(optimized);
+  //     })
+  //     .catch(err => {
+  //       console.error(err);
+  //       sendResponse(null);
+  //     });
+  //   return true; // 表示异步
+  // }
 });
