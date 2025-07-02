@@ -16,10 +16,12 @@ async function optimizePrompt(original) {
   }
 
   const sysPrompt = `
-  你是一位 prompt 工程专家。请改写用户的 prompt，使其：
-  1. 清晰具体（指定格式/角色/输出语言等）；
-  2. 删除歧义与赘述，但保留语义；
-  3. 在末尾添加“一次完成，如果不足可继续追问”的说明。`;
+  你是prompt专家，请帮我改善prompt，使其：
+  1. 清晰具体；
+  2. 增加必要语境；
+  你应主动判断原prompt的意图，并以此进一步完善prompt。
+  原prompt如下:
+  `;
 
   const resp = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
