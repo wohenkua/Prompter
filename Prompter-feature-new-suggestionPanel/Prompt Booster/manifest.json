@@ -1,0 +1,56 @@
+{
+  "name": "Prompter",
+  "description": "Help users to conveniently improve their prompt",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "icons": {
+  "16":  "assets/icon16.png",
+  "32":  "assets/icon32.png",
+  "48":  "assets/icon48.png",
+  "128": "assets/icon128.png"
+  },
+  "action": {
+	"default_title": "Prompt History",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16":  "assets/icon16.png",
+      "32":  "assets/icon32.png",
+      "48":  "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://api.openai.com/*",
+    "https://chatgpt.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://chat.openai.com/*","https://chatgpt.com/*","https://chat.deepseek.com/*"],
+      "js": ["content.js","showCenterReminder.js"]
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/icon32.png",
+        "assets/loading.webp"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "background": {
+    "service_worker": "service_worker.js",
+    "type": "module"
+  }
+}
