@@ -9,4 +9,12 @@ document.getElementById("save").onclick = async () => {
   });
 
   alert("已保存!");
+<<<<<<< HEAD
+=======
+
+
+  window.open("https://chatgpt.com")
+
+  
+>>>>>>> d9f0d41 (migrate changes from suggestionPanel)
 };
